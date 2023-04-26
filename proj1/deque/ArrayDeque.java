@@ -21,7 +21,7 @@ public class ArrayDeque<T> {
             resize(capacity * 2);
         }
         items[first] = item;
-        first = (first - 1) % capacity;
+        first = ((first - 1) % capacity + capacity) % capacity;
         size++;
     }
 
@@ -70,7 +70,7 @@ public class ArrayDeque<T> {
         if (capacity >= 16 && (size - 1) * 4 == capacity) {
             resize(capacity / 2);
         }
-        last = (last - 1) % capacity;
+        last = ((last - 1) % capacity + capacity) % capacity;
         T item = items[last];
         items[last] = null;
         size--;
